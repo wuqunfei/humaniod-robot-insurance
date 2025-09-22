@@ -1,0 +1,4 @@
+config:
+  azure-native:region: East US
+  app:environment: dev
+  app:postgresAdminLogin: adminuser

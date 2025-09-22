@@ -1,0 +1,20 @@
+name: humanoid-robot-insurance
+runtime: python
+description: Humanoid Robot Insurance Platform Infrastructure
+
+config:
+  azure-native:region:
+    description: The Azure region to deploy resources
+    default: East US
+  
+  app:environment:
+    description: The environment (dev, staging, prod)
+    default: dev
+  
+  app:postgresAdminLogin:
+    description: PostgreSQL administrator login
+    default: adminuser
+  
+  app:postgresAdminPassword:
+    description: PostgreSQL administrator password
+    secret: true

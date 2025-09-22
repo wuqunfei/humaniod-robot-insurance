@@ -27,10 +27,15 @@
 - **Data Validation**: Pydantic for request/response validation and serialization
 
 ### Infrastructure
-- **Cloud-native**: Designed for horizontal scaling with Docker containers
+- **Cloud Platform**: Azure Container Apps for serverless container deployment
+- **Database**: Azure Database for PostgreSQL (Flexible Server)
+- **Container Registry**: Azure Container Registry (ACR)
+- **CI/CD**: GitHub Actions for automated deployment pipeline
+- **Configuration**: Environment variables and .env files for local development
 - **Circuit Breakers**: Fault tolerance and graceful degradation using tenacity
 - **Health Checks**: Database and service monitoring with custom health endpoints
-- **Logging**: Structured logging with loguru
+- **Logging**: Structured logging with loguru and Azure Application Insights
+- **Secrets Management**: Azure Key Vault for production secrets
 
 ## Development Standards
 
@@ -98,4 +103,41 @@ python scripts/seed_data.py
 
 # Export OpenAPI spec
 python scripts/export_openapi.py
+```
+
+### Infrastructure Management
+```bash
+# Navigate to infrastructure directory
+cd infrastructure
+
+# Install Pulumi dependencies
+pip install -r requirements.txt
+
+# Initialize Pulumi stack
+pulumi stack init dev
+
+# Configure secrets
+pulumi config set --secret app:postgresAdminPassword YourSecurePassword123!
+
+# Deploy infrastructure
+pulumi up
+
+# View stack outputs
+pulumi stack output
+
+# Destroy infrastructure
+pulumi destroy
+```
+
+### Azure Deployment
+```bash
+# Build and push container
+docker build -t humanoid-robot-insurance .
+az acr build --registry <registry-name> --image humanoid-robot-insurance:latest .
+
+# Deploy to Container Apps
+az containerapp update --name humanoid-robot-insurance --resource-group <rg-name> --image <registry-name>.azurecr.io/humanoid-robot-insurance:latest
+
+# View logs
+az containerapp logs show --name humanoid-robot-insurance --resource-group <rg-name>
 ```

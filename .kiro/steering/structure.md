@@ -50,11 +50,22 @@
 ├── scripts/              # Utility scripts
 │   ├── seed_data.py      # Database seeding
 │   └── export_openapi.py # OpenAPI spec export
+├── .github/              # GitHub Actions workflows
+│   └── workflows/        # CI/CD pipeline definitions
+├── infrastructure/       # Infrastructure as code
+│   ├── __main__.py      # Pulumi infrastructure definition
+│   ├── Pulumi.yaml      # Pulumi project configuration
+│   ├── Pulumi.dev.yaml  # Development environment config
+│   ├── Pulumi.prod.yaml # Production environment config
+│   ├── requirements.txt # Pulumi dependencies
+│   └── README.md        # Infrastructure documentation
 ├── requirements.txt      # Production dependencies
 ├── requirements-dev.txt  # Development dependencies
 ├── alembic.ini          # Alembic configuration
 ├── pyproject.toml       # Project metadata and tool configuration
-└── Dockerfile           # Container configuration
+├── Dockerfile           # Container configuration
+├── .env.example         # Environment variables template
+└── .dockerignore        # Docker ignore file
 ```
 
 ## Core Entity Organization
